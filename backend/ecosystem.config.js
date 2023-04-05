@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: ".env.deploy" });
 
 const {
   DEPLOY_USER, DEPLOY_HOST, DEPLOY_PATH, DEPLOY_REF = 'origin/master',
@@ -18,7 +18,7 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: 'https://github.com/kuzinartemiy/web-plus-pm2-deploy.git',
       path: DEPLOY_PATH,
-      'pre-deploy-local': `scp .env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
+      'pre-deploy-local': `scp .env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH} --env deploy`,
       'post-deploy': 'npm i && npm run build',
     },
   },
