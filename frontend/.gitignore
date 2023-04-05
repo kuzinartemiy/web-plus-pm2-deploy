@@ -21,6 +21,11 @@
 .env.test.local
 .env.production.local
 
+# deploy
+source
+.deploys
+current
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
