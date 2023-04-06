@@ -4,6 +4,7 @@ const {
   DEPLOY_USER,
   DEPLOY_HOST,
   DEPLOY_PATH,
+  DEPLOY_REPO,
   DEPLOY_REF = "origin/master",
 } = process.env;
 
@@ -13,9 +14,9 @@ module.exports = {
       user: DEPLOY_USER,
       host: DEPLOY_HOST,
       ref: DEPLOY_REF,
-      repo: "https://github.com/kuzinartemiy/web-plus-pm2-deploy.git",
+      repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
-      "post-deploy": "npm i && npm run build",
+      "post-deploy": "npm i && npm run build && pm2 restart all --update-env",
     },
   },
 };
